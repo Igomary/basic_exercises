@@ -5,6 +5,9 @@
 # Маша: 2
 # Петя: 2
 
+from turtle import st
+
+
 students = [
     {'first_name': 'Вася'},
     {'first_name': 'Петя'},
@@ -13,6 +16,28 @@ students = [
     {'first_name': 'Петя'},
 ]
 # ???
+
+print('Задание 1: ')
+
+list_new ={}
+
+for each in students:
+    st_name = each['first_name']
+    if st_name in list_new:
+        list_new[st_name] = list_new.get(st_name) + 1
+    else:
+        list_new[st_name] = 1
+
+list_new = dict(sorted(list_new.items()))
+
+for key, value in list_new.items():
+    print(f'{key}: {value}')
+
+
+
+
+    
+
 
 
 # Задание 2
@@ -27,6 +52,23 @@ students = [
     {'first_name': 'Оля'},
 ]
 # ???
+print('\nЗадание 2: ')
+list_new ={}
+
+for each in students:
+    st_name = each['first_name']
+    if st_name in list_new:
+        list_new[st_name] = list_new.get(st_name) + 1
+    else:
+        list_new[st_name] = 1
+
+max_value = max(list_new.values())
+
+for key, value in list_new.items():
+    if value == max_value:
+     print(f'Cамое частое имя среди учеников: {key}')
+
+
 
 
 # Задание 3
@@ -52,7 +94,28 @@ school_students = [
     ],
 ]
 # ???
+print('\nЗадание 3: ')
 
+i = 1
+
+for students in school_students:
+
+    list_new ={}
+
+    for each in students:
+        st_name = each['first_name']
+        if st_name in list_new:
+            list_new[st_name] = list_new.get(st_name) + 1
+        else:
+            list_new[st_name] = 1
+
+    max_value = max(list_new.values())
+
+    for key, value in list_new.items():
+        if value == max_value:
+            print(f'Cамое частое имя в классе {i}: {key}')
+    
+    i += 1
 
 # Задание 4
 # Для каждого класса нужно вывести количество девочек и мальчиков в нём.
@@ -63,7 +126,7 @@ school_students = [
 school = [
     {'class': '2a', 'students': [{'first_name': 'Маша'}, {'first_name': 'Оля'}]},
     {'class': '2б', 'students': [{'first_name': 'Олег'}, {'first_name': 'Миша'}]},
-    {'class': '2б', 'students': [{'first_name': 'Даша'}, {'first_name': 'Олег'}, {'first_name': 'Маша'}]},
+    {'class': '3б', 'students': [{'first_name': 'Даша'}, {'first_name': 'Олег'}, {'first_name': 'Маша'}]},
 ]
 is_male = {
     'Олег': True,
@@ -73,6 +136,19 @@ is_male = {
     'Даша': False,
 }
 # ???
+print('\nЗадание 4: ')
+
+for school_class in school:
+    male = 0
+    female = 0
+    class_name = school_class['class']
+    for each in school_class['students']:
+        if is_male.get(each['first_name'])==True:
+            male += 1
+        else:
+            female += 1
+    
+    print(f'Класс {class_name}: девочки {female}, мальчики {male}')
 
 
 # Задание 5
@@ -92,4 +168,36 @@ is_male = {
     'Миша': True,
 }
 # ???
+print('\nЗадание 5: ')
+
+school_new = []
+
+for school_class in school:
+    male = 0
+    female = 0
+    class_name = school_class['class']
+    for each in school_class['students']:
+        if is_male.get(each['first_name'])==True:
+            male += 1
+        else:
+            female += 1
+    
+    school_new.append({'class':class_name, 'male' : male, 'female' : female})
+
+max_males = 0
+max_females = 0
+f_class_name = ''
+m_class_name = ''
+
+for each in school_new:
+    if each['male'] > max_males:
+        max_males = each['male']
+        m_class_name = each['class']
+    if each['female'] > max_females:
+        max_females = each['female']
+        f_class_name = each['class']
+
+print(f'Больше всего мальчиков в классе {m_class_name}')
+print(f'Больше всего девочек в классе {f_class_name}')
+
 
