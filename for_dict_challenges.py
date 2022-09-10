@@ -5,7 +5,6 @@
 # Маша: 2
 # Петя: 2
 
-from turtle import st
 
 
 students = [
