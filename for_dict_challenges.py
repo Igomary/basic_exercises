@@ -45,12 +45,7 @@ students = [
 # ???
 print('\nЗадание 2: ')
 list_new =list_names(students)
-max_value = max(list_new.values())
-
-for key, value in list_new.items():
-    if value == max_value:
-     print(f'Cамое частое имя среди учеников: {key}')
-
+print(f'Cамое частое имя в среди учеников: {max(list_new, key=list_new.get)}')
 
 
 
@@ -84,12 +79,7 @@ i = 1
 for students in school_students:
 
     list_new = list_names(students)
-    max_value = max(list_new.values())
-
-    for key, value in list_new.items():
-        if value == max_value:
-            print(f'Cамое частое имя в классе {i}: {key}')
-    
+    print(f'Cамое частое имя в классе {i}: {max(list_new, key=list_new.get)}')   
     i += 1
 
 # Задание 4
