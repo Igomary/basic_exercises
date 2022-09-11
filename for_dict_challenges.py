@@ -5,7 +5,12 @@
 # Маша: 2
 # Петя: 2
 
-
+def list_names(students_group):
+    list_new ={}
+    for each in students_group:
+        st_name = each['first_name']
+        list_new[st_name] = list_new.get(st_name, 0) + 1
+    return(list_new)
 
 students = [
     {'first_name': 'Вася'},
@@ -16,25 +21,12 @@ students = [
 ]
 # ???
 
-print('Задание 1: ')
-
-list_new ={}
-
-for each in students:
-    st_name = each['first_name']
-    if st_name in list_new:
-        list_new[st_name] = list_new.get(st_name) + 1
-    else:
-        list_new[st_name] = 1
-
+print('\nЗадание 1: ')
+list_new = list_names(students)
 list_new = dict(sorted(list_new.items()))
 
 for key, value in list_new.items():
     print(f'{key}: {value}')
-
-
-
-
     
 
 
@@ -52,21 +44,8 @@ students = [
 ]
 # ???
 print('\nЗадание 2: ')
-list_new ={}
-
-for each in students:
-    st_name = each['first_name']
-    if st_name in list_new:
-        list_new[st_name] = list_new.get(st_name) + 1
-    else:
-        list_new[st_name] = 1
-
-max_value = max(list_new.values())
-
-for key, value in list_new.items():
-    if value == max_value:
-     print(f'Cамое частое имя среди учеников: {key}')
-
+list_new =list_names(students)
+print(f'Cамое частое имя в среди учеников: {max(list_new, key=list_new.get)}')
 
 
 
@@ -99,21 +78,8 @@ i = 1
 
 for students in school_students:
 
-    list_new ={}
-
-    for each in students:
-        st_name = each['first_name']
-        if st_name in list_new:
-            list_new[st_name] = list_new.get(st_name) + 1
-        else:
-            list_new[st_name] = 1
-
-    max_value = max(list_new.values())
-
-    for key, value in list_new.items():
-        if value == max_value:
-            print(f'Cамое частое имя в классе {i}: {key}')
-    
+    list_new = list_names(students)
+    print(f'Cамое частое имя в классе {i}: {max(list_new, key=list_new.get)}')   
     i += 1
 
 # Задание 4
@@ -142,7 +108,7 @@ for school_class in school:
     female = 0
     class_name = school_class['class']
     for each in school_class['students']:
-        if is_male.get(each['first_name'])==True:
+        if is_male.get(each['first_name']):
             male += 1
         else:
             female += 1
@@ -176,7 +142,7 @@ for school_class in school:
     female = 0
     class_name = school_class['class']
     for each in school_class['students']:
-        if is_male.get(each['first_name'])==True:
+        if is_male.get(each['first_name']):
             male += 1
         else:
             female += 1
@@ -198,5 +164,3 @@ for each in school_new:
 
 print(f'Больше всего мальчиков в классе {m_class_name}')
 print(f'Больше всего девочек в классе {f_class_name}')
-
-
