@@ -5,12 +5,6 @@
 # Маша: 2
 # Петя: 2
 
-def list_names(students_group):
-    list_new ={}
-    for each in students_group:
-        st_name = each['first_name']
-        list_new[st_name] = list_new.get(st_name, 0) + 1
-    return(list_new)
 
 students = [
     {'first_name': 'Вася'},
